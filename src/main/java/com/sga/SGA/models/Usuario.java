@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idUser;
+	private long id;
 	@Size(min = 2, max = 40)
 	@Column(name="nombre",nullable=false,length=60)
 	private String  nombre;
@@ -62,7 +62,7 @@ public class Usuario {
 			String telefono, String password, String nombreColegio, boolean isHabilitado, Date fechaNacimiento,
 			Date fechaRegistrado) {
 		super();
-		this.idUser = idUser;
+		this.id = idUser;
 		this.nombre = nombre;
 		this.direcion = direcion;
 		this.dni = dni;
@@ -80,16 +80,16 @@ public class Usuario {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [idUser=" + idUser + ", nombre=" + nombre + ", direcion=" + direcion + ", dni=" + dni
+		return "Usuario [idUser=" + id + ", nombre=" + nombre + ", direcion=" + direcion + ", dni=" + dni
 				+ ", correo=" + correo + ", telefono=" + telefono + ", password=" + password + ", nombreColegio="
 				+ nombreColegio + ", isHabilitado=" + isHabilitado + ", fechaNacimiento=" + fechaNacimiento
 				+ ", fechaRegistrado=" + fechaRegistrado + "]";
 	}
 	public long getIdUser() {
-		return idUser;
+		return id;
 	}
 	public void setIdUser(long idUser) {
-		this.idUser = idUser;
+		this.id = idUser;
 	}
 	public String getNombre() {
 		return nombre;

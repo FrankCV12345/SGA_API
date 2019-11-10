@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,22 +36,33 @@ public class LoginController {
 	private BCryptPasswordEncoder encoder;
 	
 	@PostMapping
-	public ResponseEntity<Usuario> Login(@RequestParam("correo") String correoUser, @RequestParam("password") String pwd) {
+	public ResponseEntity<Usuario> Login(@RequestBody Usuario userLogin) {
 		
 		Usuario user  = null;
-		user = loginService.Login(correoUser);
+		user = loginService.Login(userLogin.getCorreo());
 		if(user != null) {
-			if(encoder.matches(pwd,user.getPassword())  ) {
-			
-				user.setToken(getJWTToken(correoUser));
-				user.setPassword(null);
-				return new ResponseEntity<Usuario>(user,HttpStatus.ACCEPTED);
+			if(encoder.matches(userLogin.getPassword(),user.getPassword())  ) {
+				
+				if(user.isHabilitado()) {
+
+					user.setToken(getJWTToken(userLogin.getCorreo()));
+					user.setPassword(null);
+					return new ResponseEntity<Usuario>(user,HttpStatus.ACCEPTED);
+				}else {
+					return new ResponseEntity<Usuario>(HttpStatus.NOT_FOUND);
+				}
+				
+				
 			}else {
 				user = null;
+				user = new Usuario();
+				user.setNombre("contrasena invalida");
 				return   new ResponseEntity<Usuario>(user,HttpStatus.BAD_REQUEST);
 			}
 			
 		}else {
+			user = new Usuario();
+			user.setNombre("no llego nada");
 			return   new ResponseEntity<Usuario>(user,HttpStatus.BAD_REQUEST);
 		}
 		

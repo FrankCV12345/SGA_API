@@ -7,4 +7,5 @@ public interface IUsuaio extends JpaRepository<Usuario,Long> {
 	
 	Usuario findByNombre(String nombreUser);
 	Usuario findByCorreo(String correoUser);
+	Usuario findById(long id);
 }

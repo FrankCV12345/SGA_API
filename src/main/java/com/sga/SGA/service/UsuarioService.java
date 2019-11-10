@@ -47,7 +47,7 @@ public class UsuarioService implements IUsuarioService{
 	@Override
 	public Usuario listarPorId(long idUser) {
 		// TODO Auto-generated method stub
-		return null;
+		return iusario.findById(idUser);//iusario.findOne(idUser);
 	}
 
 	@Override
