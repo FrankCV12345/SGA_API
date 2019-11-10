@@ -1,0 +1,53 @@
+package com.sga.SGA.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import com.sga.SGA.service.UsuarioService;
+
+import com.sga.SGA.models.Usuario;;
+
+@RestController
+@RequestMapping("/usuario")
+public class UsuarioController {
+	@Autowired
+	private UsuarioService usuarioServicio ;
+	
+	@GetMapping
+	public ResponseEntity<List<Usuario>> listar() {
+		List<Usuario> listaUsuario = usuarioServicio.listar();
+		return new ResponseEntity<List<Usuario>>(listaUsuario,HttpStatus.OK);
+	}
+	
+	@GetMapping(path="/{id}")
+	public ResponseEntity<Usuario> BuscaPorId( @PathVariable("id") long idUser) {
+		Usuario usuario = (Usuario) usuarioServicio.listarPorId(idUser);
+			if(usuario != null) {
+				return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
+			}else {
+				return new ResponseEntity<Usuario>(HttpStatus.NOT_FOUND);
+			}
+		
+	}
+	@PostMapping
+	public ResponseEntity<Usuario> Registra(@Valid @RequestBody Usuario user ){
+		Usuario u =  usuarioServicio.registrar(user);
+		if(u != null) {
+			return  new ResponseEntity<Usuario>(u,HttpStatus.CREATED);
+		}else {
+			return  new ResponseEntity<Usuario>(HttpStatus.BAD_REQUEST);
+		}
+		
+		
+	}
+}
