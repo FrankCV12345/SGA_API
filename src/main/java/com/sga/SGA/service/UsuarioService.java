@@ -1,7 +1,6 @@
 package com.sga.SGA.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,11 +17,7 @@ public class UsuarioService implements IUsuarioService{
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	@Override
-	public Usuario Modificar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public boolean Eliminar() {
@@ -55,6 +50,19 @@ public class UsuarioService implements IUsuarioService{
 		// TODO Auto-generated method stub
 		user.setPassword(encoder.encode(user.getPassword()));
 		return iusario.save(user);
+	}
+
+	@Override
+	public Usuario Modificar(long id, Usuario user) {
+		// TODO Auto-generated method stub
+		Usuario User = iusario.findById(id);
+		User.setNombre(user.getNombre());
+		User.setApellidos(user.getApellidos());
+		User.setCorreo(user.getCorreo());
+		User.setDni(user.getDni());
+		User.setTelefono(user.getTelefono());
+		Usuario UserUpdated = iusario.save(User);
+		return UserUpdated;
 	}
 
 

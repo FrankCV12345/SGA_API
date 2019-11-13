@@ -41,6 +41,7 @@ public class LoginController {
 		Usuario user  = null;
 		user = loginService.Login(userLogin.getCorreo());
 		if(user != null) {
+			
 			if(encoder.matches(userLogin.getPassword(),user.getPassword())  ) {
 				
 				if(user.isHabilitado()) {
@@ -56,14 +57,13 @@ public class LoginController {
 			}else {
 				user = null;
 				user = new Usuario();
-				user.setNombre("contrasena invalida");
-				return   new ResponseEntity<Usuario>(user,HttpStatus.BAD_REQUEST);
+				return   new ResponseEntity<Usuario>(user,HttpStatus.UNAUTHORIZED);
 			}
 			
 		}else {
+			user = null;
 			user = new Usuario();
-			user.setNombre("no llego nada");
-			return   new ResponseEntity<Usuario>(user,HttpStatus.BAD_REQUEST);
+			return   new ResponseEntity<Usuario>(user,HttpStatus.UNAUTHORIZED);
 		}
 		
 	}

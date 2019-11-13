@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import com.sga.SGA.models.Usuario;
 public interface IUsuarioService {
 	Usuario registrar ( Usuario user);
-	Usuario Modificar();
+	Usuario Modificar(long id , Usuario user);
 	boolean Eliminar();
 	List<Usuario> listar();
 	Usuario listarPorId(long idUser);

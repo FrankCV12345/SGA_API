@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,5 +54,15 @@ public class UsuarioController {
 		}
 		
 		
+	}
+	
+	@PutMapping(path="/{id}")
+	public ResponseEntity<Usuario>AztualizaDatosUser(@PathVariable("id") Long id , @Valid @RequestBody  Usuario user){
+		if( id == null || user  == null ) {
+			return new ResponseEntity<Usuario>(HttpStatus.BAD_REQUEST); 
+		}else  {
+			Usuario UserUpdated =  usuarioServicio.Modificar(id, user);
+			return new ResponseEntity<Usuario>(UserUpdated,HttpStatus.ACCEPTED);
+		}
 	}
 }
