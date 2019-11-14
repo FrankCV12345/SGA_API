@@ -19,10 +19,9 @@ import javax.validation.Valid;
 import com.sga.SGA.service.UsuarioService;
 
 import com.sga.SGA.models.Usuario;;
-
+@CrossOrigin(origins = "*", methods= {RequestMethod.POST,RequestMethod.GET,RequestMethod.PUT,RequestMethod.DELETE})
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin(origins = "*", methods= {RequestMethod.POST,RequestMethod.GET,RequestMethod.PUT,RequestMethod.DELETE})
 public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioServicio ;
