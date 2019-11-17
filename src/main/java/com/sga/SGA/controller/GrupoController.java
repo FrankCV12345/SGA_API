@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.sga.SGA.models.Grupo;
 import java.util.List;
 
 import com.sga.SGA.service.GrupoService;
 
-@RestControllerAdvice
+@RestController
 @RequestMapping("/Grupo")
 public class GrupoController {
 	@Autowired

@@ -8,4 +8,5 @@ public interface IUsuario_SolicitudService {
 	Solcitud_alumno modificar( Solcitud_alumno solicitudAlumno);
 	boolean aliminar(long id);
 	List<Solcitud_alumno> listar();
+	List<Solcitud_alumno> buscaPorIdAlumno(long id);
 }

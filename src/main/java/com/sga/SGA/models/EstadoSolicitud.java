@@ -53,6 +53,12 @@ public class EstadoSolicitud {
 	public EstadoSolicitud() {
 		super();
 	}
+	public EstadoSolicitud(long id) {
+		super();
+		this.id = id;
+	}
+	
+	
 	
 	
 }
