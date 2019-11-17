@@ -9,5 +9,6 @@ import com.sga.SGA.models.Usuario;
 public interface IRespositorySolicitud_alumno extends JpaRepository<Solcitud_alumno, Long> {
 
 	List<Solcitud_alumno> findByUsuariosolicitud(Usuario user);
+	Solcitud_alumno findById(int id);
 
 }

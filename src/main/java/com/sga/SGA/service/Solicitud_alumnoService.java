@@ -23,10 +23,15 @@ public class Solicitud_alumnoService implements IUsuario_SolicitudService {
 	}
 
 	@Override
-	public Solcitud_alumno modificar(Solcitud_alumno solicitudAlumno) {
+	public Solcitud_alumno modificarEstado(int idSolicitud,Solcitud_alumno solicitudAlumno) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		Solcitud_alumno updatedSolcitud_alumno = repoSolicitudAlumno.findById(idSolicitud);
+		updatedSolcitud_alumno.setEstadosolicitud(solicitudAlumno.getEstadosolicitud());
+		return repoSolicitudAlumno.save(updatedSolcitud_alumno);
 	}
+	
+	
 
 	@Override
 	public boolean aliminar(long id) {
