@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class TipoRol {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idRol;
+	private long id;
 	@Column(name="nombrerol",nullable=false,unique=true,length=40)
 	private String nombreRol;
 	@Column(name="descripcion",nullable=true,length=120)
@@ -25,34 +25,55 @@ public class TipoRol {
 	public TipoRol() {
 		super();
 	}
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
 	public String getNombreRol() {
 		return nombreRol;
 	}
+
+
+
 	public void setNombreRol(String nombreRol) {
 		this.nombreRol = nombreRol;
 	}
+
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
+
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+
+
 	public int getNivelAcceso() {
 		return nivelAcceso;
 	}
+
+
+
 	public void setNivelAcceso(int nivelAcceso) {
 		this.nivelAcceso = nivelAcceso;
 	}
-	public long getIdRol() {
-		return idRol;
-	}
-	public TipoRol(long idRol, String nombreRol, String descripcion, int nivelAcceso) {
-		super();
-		this.idRol = idRol;
-		this.nombreRol = nombreRol;
-		this.descripcion = descripcion;
-		this.nivelAcceso = nivelAcceso;
-	}
+	
 	
     
     

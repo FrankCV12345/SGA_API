@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sga.SGA.Repository.IUsuaio;
+import com.sga.SGA.models.TipoDNI;
+import com.sga.SGA.models.TipoSexo;
 import com.sga.SGA.models.Usuario;
 @Service
 public class UsuarioService implements IUsuarioService{
@@ -61,6 +63,8 @@ public class UsuarioService implements IUsuarioService{
 		User.setCorreo(user.getCorreo());
 		User.setDni(user.getDni());
 		User.setTelefono(user.getTelefono());
+		User.setTipoDoc(new TipoDNI(user.getTipoDoc().getId()));
+		User.setSexo(new TipoSexo(user.getSexo().getId()));
 		Usuario UserUpdated = iusario.save(User);
 		return UserUpdated;
 	}

@@ -46,17 +46,16 @@ public class Usuario {
 	@Transient
 	private String token;
 	//Claves foraneas
-	/*@ManyToOne
-	private TipoDNI idTipoDoc;
 	@ManyToOne
-	private TipoSexo idSexo;
+	private TipoDNI TipoDoc;
 	@ManyToOne
-	private Sede idSede;
+	private TipoSexo Sexo;
 	@ManyToOne
-	private TipoRol idRol;
+	private Sede Sede;
 	@ManyToOne
-	private Grupo idGrupo;
-	*/
+	private TipoRol Rol;
+	@ManyToOne
+	private Grupo Grupo;
 	
 	public Usuario(long idUser, @Size(min = 2, max = 40) String nombre, String direcion, String dni, String correo,
 			String telefono, String password, String nombreColegio, boolean isHabilitado, Date fechaNacimiento,
@@ -163,5 +162,44 @@ public class Usuario {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public TipoDNI getTipoDoc() {
+		return TipoDoc;
+	}
+	public void setTipoDoc(TipoDNI tipoDoc) {
+		TipoDoc = tipoDoc;
+	}
+	public TipoSexo getSexo() {
+		return Sexo;
+	}
+	public void setSexo(TipoSexo sexo) {
+		Sexo = sexo;
+	}
+	public Sede getSede() {
+		return Sede;
+	}
+	public void setSede(Sede sede) {
+		Sede = sede;
+	}
+	public TipoRol getRol() {
+		return Rol;
+	}
+	public void setRol(TipoRol rol) {
+		Rol = rol;
+	}
+	public Grupo getGrupo() {
+		return Grupo;
+	}
+	public void setGrupo(Grupo grupo) {
+		Grupo = grupo;
+	}
+	
+
+	
 		
 }

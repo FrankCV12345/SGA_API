@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class TipoSexo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idSexo;
+	private long id;
 	@Column(name="nombreSexo",nullable=false,unique=true,length=40)
 	private String nombreSexo;
 	@Column(name="Descripcion",nullable=true,length=120)
@@ -21,25 +21,45 @@ public class TipoSexo {
 	public TipoSexo() {
 		super();
 	}
-	public TipoSexo(String nombreSexo, String descripcion) {
+	
+	
+
+
+	public TipoSexo(long id) {
 		super();
-		this.nombreSexo = nombreSexo;
-		Descripcion = descripcion;
+		this.id = id;
 	}
+
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 	public String getNombreSexo() {
 		return nombreSexo;
 	}
+
+
 	public void setNombreSexo(String nombreSexo) {
 		this.nombreSexo = nombreSexo;
 	}
+
+
 	public String getDescripcion() {
 		return Descripcion;
 	}
+
+
 	public void setDescripcion(String descripcion) {
 		Descripcion = descripcion;
-	}
-	public long getIdSexo() {
-		return idSexo;
 	}
 	
 	

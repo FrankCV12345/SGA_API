@@ -12,39 +12,53 @@ import javax.persistence.Id;
 public class TipoDNI {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idTipoDoc;
+	private long id;
 	@Column(name="nombreDoc",nullable=false,unique=true,length=80)
 	private String nombreDoc;
 	@Column(name="descripcion",nullable=true,length=200)
 	private String descripcion;
 	
 	
+	public TipoDNI(long id) {
+		super();
+		this.id = id;
+	}
+
+
 	public TipoDNI() {
 		super();
 	}
-	public TipoDNI(String nombreDoc, String descripcion) {
-		super();
-		this.nombreDoc = nombreDoc;
-		this.descripcion = descripcion;
+
+
+	public long getId() {
+		return id;
 	}
-	public long getIdTipoDoc() {
-		return idTipoDoc;
+
+
+	public void setId(long id) {
+		this.id = id;
 	}
-	public void setIdTipoDoc(long idTipoDoc) {
-		this.idTipoDoc = idTipoDoc;
-	}
+
+
 	public String getNombreDoc() {
 		return nombreDoc;
 	}
+
+
 	public void setNombreDoc(String nombreDoc) {
 		this.nombreDoc = nombreDoc;
 	}
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
 	
 	
 }
