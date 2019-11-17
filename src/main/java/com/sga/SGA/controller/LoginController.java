@@ -59,12 +59,14 @@ public class LoginController {
 			}else {
 				user = null;
 				user = new Usuario();
+				user.setNombre("contrasena mala");
 				return   new ResponseEntity<Usuario>(user,HttpStatus.UNAUTHORIZED);
 			}
 			
 		}else {
 			user = null;
 			user = new Usuario();
+			user.setNombre("nulo");
 			return   new ResponseEntity<Usuario>(user,HttpStatus.UNAUTHORIZED);
 		}
 		
