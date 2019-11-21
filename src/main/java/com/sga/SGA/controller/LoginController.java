@@ -26,9 +26,9 @@ import java.util.List;
 
 
 
+@CrossOrigin(origins = "http://localhost:8081/#/")
 @RestController
 @RequestMapping("/login")
-@CrossOrigin(origins = "*", methods= {RequestMethod.POST})
 public class LoginController {
 	
 	@Autowired

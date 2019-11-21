@@ -1,5 +1,6 @@
 package com.sga.SGA.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,9 @@ public class UsuarioService implements IUsuarioService{
 	@Override
 	public Usuario registrar(Usuario user) {
 		// TODO Auto-generated method stub
+		java.util.Date utilDate = new java.util.Date();
 		user.setPassword(encoder.encode(user.getPassword()));
+		user.setFechaRegistrado(new Date(utilDate.getTime()));
 		return iusario.save(user);
 	}
 

@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.sga.SGA.models.Solcitud_alumno;
 import com.sga.SGA.service.Solicitud_alumnoService;
 
-@RestControllerAdvice
+@RestController
 @RequestMapping("/SolicitudesAlumno")
 public class SolicitudesAlumnoController {
 	@Autowired
