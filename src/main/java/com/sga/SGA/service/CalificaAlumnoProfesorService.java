@@ -1,11 +1,11 @@
 package com.sga.SGA.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.sga.SGA.Repository.IRepositoryCalificacionAlumnoPofesor;
 import com.sga.SGA.models.CalificacionAlumnoProfesor;
 import com.sga.SGA.models.PerfiCalificafionProfesor;
@@ -55,6 +55,26 @@ public class CalificaAlumnoProfesorService implements ICalificaAlumnoProfesorSer
 		}
 		
 		return perfil;
+	}
+
+	@Override
+	public List<Usuario> ListaProfesoresPorGrupo(long id) {
+		List<Usuario> profesorePorGrupo = new ArrayList<>();
+		
+		List<Object[]> lista =  repoCalificaciones.ListaProfesorPorGrupo(id);
+		
+		for(Object[] obj : lista ) {
+			Usuario pefesor = new Usuario();
+			pefesor.setId(Long.parseLong((obj[0].toString())));
+			pefesor.setNombre(obj[1].toString());
+			pefesor.setApellidos(obj[2].toString());
+			pefesor.setCorreo((obj[3].toString()));
+			profesorePorGrupo.add(pefesor);
+			
+		}
+		
+		// TODO Auto-generated method stub
+		return profesorePorGrupo ;
 	}
 
 }

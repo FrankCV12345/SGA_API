@@ -15,6 +15,7 @@ import com.sga.SGA.service.CalificaAlumnoProfesorService;
 import java.util.List;
 import com.sga.SGA.models.CalificacionAlumnoProfesor;
 import com.sga.SGA.models.PerfiCalificafionProfesor;
+import com.sga.SGA.models.Usuario;
 
 @RestController
 @RequestMapping("/calificacionProfesor")
@@ -43,6 +44,17 @@ public class CalificacionAlumnoProfesorController {
 		return  new ResponseEntity<CalificacionAlumnoProfesor>(newCalificacion,HttpStatus.CREATED);
 	
 	}
+	@GetMapping("/grupo/{id}")
+	public ResponseEntity<List<Usuario>> profesoporGrupor(@PathVariable("id") long id){
+		
+		List<Usuario> profesoresPorGrupo = calificacionesProfesorService.ListaProfesoresPorGrupo(id);
+		
+		if(profesoresPorGrupo != null) {
+			return new ResponseEntity<List<Usuario>>(profesoresPorGrupo,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<List<Usuario>>(HttpStatus.NOT_FOUND);
+		}
 	
+	}
 
 }
