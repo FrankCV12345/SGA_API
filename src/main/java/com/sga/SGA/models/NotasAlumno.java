@@ -18,11 +18,11 @@ public class NotasAlumno {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column(nullable=true)
-	private double nota1;
+	private Double nota1;
 	@Column(nullable=true)
-	private double nota2;
+	private Double nota2;
 	@Column(nullable=true)
-	private double nota3;
+	private Double nota3;
 	@Column(nullable=true)
 	private double examenfinal;
 	@Column(nullable=true,length=20)
@@ -37,12 +37,10 @@ public class NotasAlumno {
 	@ManyToOne
 	private CursosCarreras curso;
 	
+	
+	
 	public NotasAlumno() {
 		super();
-	}
-	public NotasAlumno(long id) {
-		super();
-		this.id = id;
 	}
 	public long getId() {
 		return id;
@@ -50,22 +48,22 @@ public class NotasAlumno {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public double getNota1() {
+	public Double getNota1() {
 		return nota1;
 	}
-	public void setNota1(double nota1) {
+	public void setNota1(Double nota1) {
 		this.nota1 = nota1;
 	}
-	public double getNota2() {
+	public Double getNota2() {
 		return nota2;
 	}
-	public void setNota2(double nota2) {
+	public void setNota2(Double nota2) {
 		this.nota2 = nota2;
 	}
-	public double getNota3() {
+	public Double getNota3() {
 		return nota3;
 	}
-	public void setNota3(double nota3) {
+	public void setNota3(Double nota3) {
 		this.nota3 = nota3;
 	}
 	public double getExamenfinal() {
@@ -104,6 +102,7 @@ public class NotasAlumno {
 	public void setCurso(CursosCarreras curso) {
 		this.curso = curso;
 	}
+	
 	
 	
 	

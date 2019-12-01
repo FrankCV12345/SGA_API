@@ -4,11 +4,15 @@ import java.util.List;
 import java.util.ArrayList;;
 
 public class PerfiCalificafionProfesor {
+	private String nombreProfesor;
+	private String apellidosProfesor;
 	private int promedioAclaraDudas;
 	private int primedioExpresaClaramente;
 	private int dominaTema;
+	private int cantidadCalificaciones;
 	private List<String> comentarios = new ArrayList<>() ;
 	private List<CalificacionAlumnoProfesor> listacalificaciones;
+	
 	
 	
 	public PerfiCalificafionProfesor(List<CalificacionAlumnoProfesor> listacalificaciones) {
@@ -22,7 +26,10 @@ public class PerfiCalificafionProfesor {
 			acumuladosPrimedioDominaTema += calificacion.getDominatema();
 			acumuladosPromedioExpresaClaramente +=  calificacion.getExpresaclaramente();
 			acumuladosPromediAclaraDudas += calificacion.getAclaradudas();
+			this.apellidosProfesor=calificacion.getProfesorcalificado().getApellidos();
+			this.nombreProfesor =calificacion.getProfesorcalificado().getNombre();
 			comentarios.add(calificacion.getComentario());
+			this.cantidadCalificaciones += 1;
 		}
 		this.promedioAclaraDudas = acumuladosPromediAclaraDudas/listacalificaciones.size();
 		this.primedioExpresaClaramente = acumuladosPromedioExpresaClaramente/listacalificaciones.size();
@@ -59,6 +66,24 @@ public class PerfiCalificafionProfesor {
 	}
 	public void setListacalificaciones(List<CalificacionAlumnoProfesor> listacalificaciones) {
 		this.listacalificaciones = listacalificaciones;
+	}
+	public String getNombreProfesor() {
+		return nombreProfesor;
+	}
+	public void setNombreProfesor(String nombreProfesor) {
+		this.nombreProfesor = nombreProfesor;
+	}
+	public String getApellidosProfesor() {
+		return apellidosProfesor;
+	}
+	public void setApellidosProfesor(String apellidosProfesor) {
+		apellidosProfesor = apellidosProfesor;
+	}
+	public int getCantidadCalificaciones() {
+		return cantidadCalificaciones;
+	}
+	public void setCantidadCalificaciones(int cantidadCalificaciones) {
+		this.cantidadCalificaciones = cantidadCalificaciones;
 	}
 	
 	

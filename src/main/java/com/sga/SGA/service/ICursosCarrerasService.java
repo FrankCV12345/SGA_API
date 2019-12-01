@@ -12,6 +12,8 @@ public interface ICursosCarrerasService {
 	List<CursosCarreras> lista();
 	boolean delete(long id);
 	
+	List<CursosCarreras> ListarCursosPorGrupo(Long idGrupo);
+	
 	
 	
 }

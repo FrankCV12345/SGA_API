@@ -44,12 +44,8 @@ public class CalificaAlumnoProfesorService implements ICalificaAlumnoProfesorSer
 		List<CalificacionAlumnoProfesor> lst =	repoCalificaciones.findByProfesorcalificado(profe);
 		PerfiCalificafionProfesor perfil = null;
 		if(lst.size() > 0) {
-			
-			
 			 perfil = new PerfiCalificafionProfesor(lst);
-			 
 			 perfil.setListacalificaciones(null);
-		
 		}else {
 			perfil =  null;
 		}

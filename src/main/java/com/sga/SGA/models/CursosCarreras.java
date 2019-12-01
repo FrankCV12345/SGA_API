@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+//Esta tabbla se debería llamar tbCursoGrupo error  mio 01/12/2019 
 @Entity
 @Table(name="tbCursosCarreras")
 public class CursosCarreras {

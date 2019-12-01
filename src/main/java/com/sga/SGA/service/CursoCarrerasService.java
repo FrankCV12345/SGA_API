@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sga.SGA.Repository.IRepositoryCrusosCarreras;
 import com.sga.SGA.models.CursosCarreras;
+import com.sga.SGA.models.Grupo;
 @Service
 public class CursoCarrerasService implements ICursosCarrerasService {
 
@@ -35,6 +36,13 @@ public class CursoCarrerasService implements ICursosCarrerasService {
 	public boolean delete(long id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<CursosCarreras> ListarCursosPorGrupo(Long idGrupo) {
+		Grupo grupo = new Grupo();
+		grupo.setId(idGrupo);
+		return repoCarreras.findByGrupo(grupo);
 	}
 
 }
