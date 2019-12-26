@@ -13,6 +13,7 @@ public interface ICursosCarrerasService {
 	boolean delete(long id);
 	
 	List<CursosCarreras> ListarCursosPorGrupo(Long idGrupo);
+	boolean RegistraCursosParaGrupo(List<CursosCarreras> cursos);
 	
 	
 	

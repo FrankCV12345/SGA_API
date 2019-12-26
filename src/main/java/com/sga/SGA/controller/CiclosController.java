@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,12 @@ public class CiclosController {
 	@GetMapping
 	public ResponseEntity<List<CiclosCarreras>> listar() {
 		List<CiclosCarreras> listaCiclos = serviceCiclos.listar();
+		return new ResponseEntity<List<CiclosCarreras>>(listaCiclos, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<List<CiclosCarreras>> listarCiclosPorCarrera(@PathVariable("id")  long id ) {
+		List<CiclosCarreras> listaCiclos = serviceCiclos.listarCiclosporCarrera(id);
 		return new ResponseEntity<List<CiclosCarreras>>(listaCiclos, HttpStatus.OK);
 	}
 	

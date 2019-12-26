@@ -42,6 +42,18 @@ public class CursosCarrerasController {
 		}
 	}
 	
+	@PostMapping("/registraCursos")
+	public ResponseEntity<CursosCarreras> registrarListaCursos(@RequestBody List<CursosCarreras> cursosCarrera ){
+		boolean estado = servceCurso.RegistraCursosParaGrupo(cursosCarrera);
+		
+		if(estado) {
+			return new ResponseEntity<CursosCarreras>(HttpStatus.CREATED);
+		}else {
+			return new ResponseEntity<CursosCarreras>(HttpStatus.BAD_REQUEST);
+
+		}
+	}
+	
 
 	@GetMapping("/{id}")
 	public ResponseEntity<List<CursosCarreras>> listarCursosPorGrupo(@PathVariable("id") long idGrupo){

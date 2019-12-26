@@ -3,14 +3,12 @@ package com.sga.SGA.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -19,7 +17,6 @@ import javax.validation.Valid;
 import com.sga.SGA.service.UsuarioService;
 
 import com.sga.SGA.models.Usuario;;
-@CrossOrigin(origins = "*", methods= {RequestMethod.POST,RequestMethod.GET,RequestMethod.PUT,RequestMethod.DELETE})
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -64,4 +61,10 @@ public class UsuarioController {
 			return new ResponseEntity<Usuario>(UserUpdated,HttpStatus.ACCEPTED);
 		}
 	}
+	@GetMapping("/profesores")
+	public ResponseEntity<List<Usuario>> listarProfesores() {
+		List<Usuario> listaProfesores = usuarioServicio.ListaUsuarioProfesor();
+		return new ResponseEntity<List<Usuario>>(listaProfesores,HttpStatus.OK);
+	}
+	
 }

@@ -29,14 +29,10 @@ public class CursosCarreras {
 		super();
 		this.id = id;
 	}
-	
-	
 
 	public CursosCarreras() {
 		super();
 	}
-
-
 
 	public long getId() {
 		return id;

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sga.SGA.Repository.IRepositoryCiclosCarreras;
+import com.sga.SGA.models.Carreras;
 import com.sga.SGA.models.CiclosCarreras;
 @Service
 public class CiclosCarreraService implements ICiclosCarrerasService {
@@ -33,6 +34,13 @@ public class CiclosCarreraService implements ICiclosCarrerasService {
 	public boolean delete(long id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<CiclosCarreras> listarCiclosporCarrera(Long id) {
+		Carreras carrera = new Carreras();
+		carrera.setId(id);
+		return repoCiclos.findByCarrera(carrera);
 	}
 
 }

@@ -45,4 +45,13 @@ public class CursoCarrerasService implements ICursosCarrerasService {
 		return repoCarreras.findByGrupo(grupo);
 	}
 
+	@Override
+	public boolean RegistraCursosParaGrupo(List<CursosCarreras> cursos) {
+		// TODO Auto-generated method stub
+		for(int  i =0 ; i < cursos.size() ; i ++) {
+			repoCarreras.save(cursos.get(i));
+		}
+		return true;
+	}
+
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.sga.SGA.models.CursosCarreras;
 import com.sga.SGA.models.Grupo;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class GrupoController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Grupo> registra(@RequestBody Grupo grupo ){
+	public ResponseEntity<Grupo> registra(@RequestBody Grupo grupo){
 		Grupo newGrupo = grupoService.registrar(grupo);
 		return new ResponseEntity<Grupo>(newGrupo,HttpStatus.CREATED);
 	}

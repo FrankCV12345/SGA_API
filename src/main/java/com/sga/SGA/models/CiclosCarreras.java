@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="tbCiclosCarreras")
 public class CiclosCarreras {
@@ -16,6 +18,7 @@ public class CiclosCarreras {
 	private long id;
 	@Column(nullable=false)
 	private int nrociclo;
+	@JsonIgnore
 	@ManyToOne
 	private Carreras carrera;
 	public long getId() {

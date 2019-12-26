@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="usuario")
 public class Usuario {
@@ -53,9 +55,9 @@ public class Usuario {
 	@ManyToOne
 	private Sede Sede;
 	@ManyToOne
-	private TipoRol Rol;
+	private TipoRol rol;
 	@ManyToOne
-	private Grupo Grupo;
+	private Grupo grupo;
 	
 	public Usuario(long idUser, @Size(min = 2, max = 40) String nombre, String direcion, String dni, String correo,
 			String telefono, String password, String nombreColegio, boolean isHabilitado, Date fechaNacimiento,
@@ -187,16 +189,16 @@ public class Usuario {
 		Sede = sede;
 	}
 	public TipoRol getRol() {
-		return Rol;
+		return rol;
 	}
 	public void setRol(TipoRol rol) {
-		Rol = rol;
+		this.rol = rol;
 	}
 	public Grupo getGrupo() {
-		return Grupo;
+		return grupo;
 	}
 	public void setGrupo(Grupo grupo) {
-		Grupo = grupo;
+		this.grupo = grupo;
 	}
 	
 

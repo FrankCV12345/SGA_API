@@ -12,5 +12,6 @@ public interface IUsuarioService {
 	List<Usuario> listar();
 	Usuario listarPorId(long idUser);
 	Page<Usuario> listaPageable(Pageable pageable);
+	List<Usuario> ListaUsuarioProfesor();
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.sga.SGA.Repository.IUsuaio;
 import com.sga.SGA.models.TipoDNI;
+import com.sga.SGA.models.TipoRol;
 import com.sga.SGA.models.TipoSexo;
 import com.sga.SGA.models.Usuario;
 @Service
@@ -52,7 +53,8 @@ public class UsuarioService implements IUsuarioService{
 	public Usuario registrar(Usuario user) {
 		// TODO Auto-generated method stub
 		java.util.Date utilDate = new java.util.Date();
-		user.setPassword(encoder.encode(user.getPassword()));
+		user.setPassword(encoder.encode( user.getDni() ));
+		user.setHabilitado(true);
 		user.setFechaRegistrado(new Date(utilDate.getTime()));
 		return iusario.save(user);
 	}
@@ -68,8 +70,19 @@ public class UsuarioService implements IUsuarioService{
 		User.setTelefono(user.getTelefono());
 		User.setTipoDoc(new TipoDNI(user.getTipoDoc().getId()));
 		User.setSexo(new TipoSexo(user.getSexo().getId()));
+		if(user.getGrupo() != null) {
+			User.setGrupo(user.getGrupo());
+		}
 		Usuario UserUpdated = iusario.save(User);
 		return UserUpdated;
+	}
+
+	@Override
+	public List<Usuario> ListaUsuarioProfesor() {
+		// TODO Auto-generated method stub
+		TipoRol rol = new TipoRol();
+		rol.setId(2);
+		return iusario.findByRol(rol);
 	}
 
 
