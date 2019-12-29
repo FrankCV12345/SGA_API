@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.sga.SGA.models.ReporteEstadoSolicitud;
 import com.sga.SGA.models.Solcitud_alumno;
 import com.sga.SGA.service.Solicitud_alumnoService;
 
@@ -34,6 +35,15 @@ public class SolicitudesAlumnoController {
 		Solcitud_alumno newSolicitudAlumno  = solicitudAlumnoService.registrar(newSolicAlumno);
 		return new ResponseEntity<Solcitud_alumno>(newSolicitudAlumno,HttpStatus.CREATED);
 		
+	}
+	
+	@GetMapping("/reportesolicitudes")
+	public ResponseEntity<List<ReporteEstadoSolicitud>> listarReporteEstadoSolicitudes(){
+	
+		List<ReporteEstadoSolicitud> lstaReporte = solicitudAlumnoService.ReportePorEstadoSolicitud();
+		
+		return new ResponseEntity<List<ReporteEstadoSolicitud>>(lstaReporte,HttpStatus.OK);
+	
 	}
 	
 	

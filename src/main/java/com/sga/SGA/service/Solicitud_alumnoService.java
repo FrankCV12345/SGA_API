@@ -1,12 +1,14 @@
 package com.sga.SGA.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sga.SGA.Repository.IRespositorySolicitud_alumno;
 import com.sga.SGA.models.EstadoSolicitud;
+import com.sga.SGA.models.ReporteEstadoSolicitud;
 import com.sga.SGA.models.Solcitud_alumno;
 import com.sga.SGA.models.Usuario;;
 @Service
@@ -17,7 +19,7 @@ public class Solicitud_alumnoService implements IUsuario_SolicitudService {
 	public Solcitud_alumno registrar(Solcitud_alumno solicirudALumno) {
 		// TODO Auto-generated method stub
 		java.util.Date utilDate = new java.util.Date();
-		solicirudALumno.setEstadosolicitud(new EstadoSolicitud(3));
+		solicirudALumno.setEstadosolicitud(new EstadoSolicitud(1));
 		solicirudALumno.setFechaingresosolicitud(new Date(utilDate.getTime()));
 		return repoSolicitudAlumno.save(solicirudALumno);
 	}
@@ -51,6 +53,19 @@ public class Solicitud_alumnoService implements IUsuario_SolicitudService {
 		Usuario userBusqueda = new Usuario();
 		userBusqueda.setId(id);
 		return repoSolicitudAlumno.findByUsuariosolicitud(userBusqueda);
+	}
+
+	@Override
+	public List<ReporteEstadoSolicitud> ReportePorEstadoSolicitud() {
+		
+		List<Object[]> lista = repoSolicitudAlumno.ListaEstadosSolicitud();
+		List<ReporteEstadoSolicitud> listaReporteEstadosSolicitud = new ArrayList<>();
+		// TODO Auto-generated method stub
+		for(Object[] obj : lista) {
+			ReporteEstadoSolicitud reporte = new ReporteEstadoSolicitud(obj[0].toString(), Integer.parseInt(obj[1].toString()));
+			listaReporteEstadosSolicitud.add(reporte);
+		}
+		return listaReporteEstadosSolicitud;
 	}
 
 }

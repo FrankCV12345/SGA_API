@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sga.SGA.models.CalificacionAlumnoProfesor;
 import com.sga.SGA.models.PerfiCalificafionProfesor;
+import com.sga.SGA.models.ProfesorPromedio;
 import com.sga.SGA.models.Usuario;
 
 public interface ICalificaAlumnoProfesorService {
@@ -12,5 +13,6 @@ public interface ICalificaAlumnoProfesorService {
 	List<CalificacionAlumnoProfesor> listaCalificacionPorProfesor(long idprofe );
 	PerfiCalificafionProfesor perfilCalificacion(long idprofe);
 	List<Usuario> ListaProfesoresPorGrupo(long id);
+	List<ProfesorPromedio> ListaProfesoresPromedio();
 	
 }

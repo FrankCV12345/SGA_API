@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.sga.SGA.Repository.IRepositoryCalificacionAlumnoPofesor;
 import com.sga.SGA.models.CalificacionAlumnoProfesor;
 import com.sga.SGA.models.PerfiCalificafionProfesor;
+import com.sga.SGA.models.ProfesorPromedio;
 import com.sga.SGA.models.Usuario;
 @Service
 public class CalificaAlumnoProfesorService implements ICalificaAlumnoProfesorService {
@@ -68,9 +69,25 @@ public class CalificaAlumnoProfesorService implements ICalificaAlumnoProfesorSer
 			profesorePorGrupo.add(pefesor);
 			
 		}
-		
-		// TODO Auto-generated method stub
 		return profesorePorGrupo ;
+	}
+
+	@Override
+	public List<ProfesorPromedio> ListaProfesoresPromedio() {
+		// TODO Auto-generated method stub
+		List<ProfesorPromedio> listaPromediosProfesor = new ArrayList<>();
+		List<Object[]> lista = repoCalificaciones.ListaProfesoresPromedioCalificacion();
+		for(Object[] obj : lista ) {
+			ProfesorPromedio profe = new ProfesorPromedio(
+					Long.parseLong((obj[0].toString())),
+					obj[1].toString() ,
+					Double.parseDouble( obj[2].toString())
+					);
+			listaPromediosProfesor.add(profe);
+		}
+		
+		
+		return listaPromediosProfesor;
 	}
 
 }

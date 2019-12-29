@@ -1,6 +1,7 @@
 package com.sga.SGA.service;
 import java.util.List;
 
+import com.sga.SGA.models.ReporteEstadoSolicitud;
 import com.sga.SGA.models.Solcitud_alumno;
 public interface IUsuario_SolicitudService {
 	
@@ -9,4 +10,5 @@ public interface IUsuario_SolicitudService {
 	boolean aliminar(long id);
 	List<Solcitud_alumno> listar();
 	List<Solcitud_alumno> buscaPorIdAlumno(long id);
+	List<ReporteEstadoSolicitud> ReportePorEstadoSolicitud();
 }
