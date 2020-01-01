@@ -33,7 +33,22 @@ public class Solicitud_alumnoService implements IUsuario_SolicitudService {
 		return repoSolicitudAlumno.save(updatedSolcitud_alumno);
 	}
 	
+	@Override
+	public Solcitud_alumno modificarEstadoSecretaria(Solcitud_alumno solicitudAlumno) {
+		// TODO Auto-generated method stub
+		Solcitud_alumno updatedSolcitud_alumno = repoSolicitudAlumno.findById(solicitudAlumno.getId() );
+		updatedSolcitud_alumno.setUsuarioresponsable(solicitudAlumno.getUsuarioresponsable());
+		updatedSolcitud_alumno.setEstadosolicitud(solicitudAlumno.getEstadosolicitud());
+		return repoSolicitudAlumno.save(updatedSolcitud_alumno);
+	}
 	
+	@Override
+	public List<Solcitud_alumno> listarPorResponsable(long id) {
+		// TODO Auto-generated method stub
+		Usuario responsable = new Usuario();
+		responsable.setId(id);
+		return repoSolicitudAlumno.findByUsuarioresponsable(responsable);
+	}
 
 	@Override
 	public boolean aliminar(long id) {
@@ -44,7 +59,9 @@ public class Solicitud_alumnoService implements IUsuario_SolicitudService {
 	@Override
 	public List<Solcitud_alumno> listar() {
 		// TODO Auto-generated method stub
-		return repoSolicitudAlumno.findAll();
+		EstadoSolicitud estado  = new EstadoSolicitud(1);
+			
+		return repoSolicitudAlumno.findByEstadosolicitud(estado);
 	}
 
 	@Override
@@ -68,4 +85,7 @@ public class Solicitud_alumnoService implements IUsuario_SolicitudService {
 		return listaReporteEstadosSolicitud;
 	}
 
+	
+
+	
 }
