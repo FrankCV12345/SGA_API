@@ -26,7 +26,7 @@ public class NotasAlumno {
 	@Column(nullable=true)
 	private Double nota3;
 	@Column(nullable=true)
-	private double examenfinal;
+	private Double examenfinal;
 	@Column(nullable=true,length=20)
 	private String estadoaprobado;
 	@Column(nullable=true)
@@ -66,10 +66,10 @@ public class NotasAlumno {
 	public void setNota3(Double nota3) {
 		this.nota3 = nota3;
 	}
-	public double getExamenfinal() {
+	public Double getExamenfinal() {
 		return examenfinal;
 	}
-	public void setExamenfinal(double examenfinal) {
+	public void setExamenfinal(Double examenfinal) {
 		this.examenfinal = examenfinal;
 	}
 	public String getEstadoaprobado() {

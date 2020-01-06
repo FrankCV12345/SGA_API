@@ -34,6 +34,8 @@ public class NotasAlumnoService implements INotasAlumnoService {
 				
 			}else if(notas.getNota3() ==  null) {
 				notas.setNota3(nota.getNota3());
+			}else if(notas.getExamenfinal() == null) {
+				notas.setExamenfinal(nota.getExamenfinal());
 			}
 			return repoNotasAlumno.save(notas);
 		}
