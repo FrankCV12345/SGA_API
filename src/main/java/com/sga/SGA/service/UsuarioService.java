@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sga.SGA.Repository.IUsuaio;
+import com.sga.SGA.models.Grupo;
 import com.sga.SGA.models.TipoDNI;
 import com.sga.SGA.models.TipoRol;
 import com.sga.SGA.models.TipoSexo;
@@ -79,10 +80,25 @@ public class UsuarioService implements IUsuarioService{
 
 	@Override
 	public List<Usuario> ListaUsuarioProfesor() {
-		// TODO Auto-generated method stub
+
 		TipoRol rol = new TipoRol();
 		rol.setId(2);
 		return iusario.findByRol(rol);
+	}
+
+	@Override
+	public List<Usuario> ListaUsuarioAlumno() {
+		TipoRol rol = new TipoRol();
+		rol.setId(1);
+		return iusario.findByRol(rol);
+	}
+
+	@Override
+	public List<Usuario> ListaAlumnosPorGrupo(long idGrupo) {
+
+		Grupo g  = new Grupo();
+		g.setId(idGrupo);
+		return iusario.findByGrupo(g);
 	}
 
 

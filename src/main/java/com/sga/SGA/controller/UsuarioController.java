@@ -67,4 +67,18 @@ public class UsuarioController {
 		return new ResponseEntity<List<Usuario>>(listaProfesores,HttpStatus.OK);
 	}
 	
+	
+	@GetMapping("/Alumnos")
+	public ResponseEntity<List<Usuario>> listarAlumnos() {
+		List<Usuario> listaProfesores = usuarioServicio.ListaUsuarioAlumno();
+		return new ResponseEntity<List<Usuario>>(listaProfesores,HttpStatus.OK);
+	}
+	
+	@GetMapping("/AlumnosPorGrupo/{idGrupo}")
+	public ResponseEntity<List<Usuario>> listarAlumnosPorGrupo(@PathVariable("idGrupo") long idGrupo) {
+		List<Usuario> listaAlumnosPorGrupo = usuarioServicio.ListaAlumnosPorGrupo(idGrupo);
+		return new ResponseEntity<List<Usuario>>(listaAlumnosPorGrupo,HttpStatus.OK);
+	}
+	
+	
 }

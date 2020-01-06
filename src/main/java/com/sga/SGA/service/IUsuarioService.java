@@ -13,5 +13,6 @@ public interface IUsuarioService {
 	Usuario listarPorId(long idUser);
 	Page<Usuario> listaPageable(Pageable pageable);
 	List<Usuario> ListaUsuarioProfesor();
-	
+	List<Usuario> ListaUsuarioAlumno();
+	List<Usuario> ListaAlumnosPorGrupo(long idGrupo);
 }

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="tbNotasAlumno")
 public class NotasAlumno {
@@ -36,8 +38,6 @@ public class NotasAlumno {
 	private Grupo grupo;
 	@ManyToOne
 	private CursosCarreras curso;
-	
-	
 	
 	public NotasAlumno() {
 		super();

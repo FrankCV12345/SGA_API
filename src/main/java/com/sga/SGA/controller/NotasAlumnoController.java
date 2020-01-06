@@ -1,6 +1,8 @@
 package com.sga.SGA.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sga.SGA.models.GrupoYCursoPorProfesor;
 import com.sga.SGA.models.NotasAlumno;
 import com.sga.SGA.service.NotasAlumnoService;
 @CrossOrigin(origins = "*", methods= {RequestMethod.POST,RequestMethod.GET,RequestMethod.PUT,RequestMethod.DELETE})
@@ -44,5 +47,11 @@ public class NotasAlumnoController {
 		return new ResponseEntity<NotasAlumno>(notita,HttpStatus.CREATED);
 	}
 	
+	@GetMapping("/grupoYCursosPorGrupo/{idProfesor}")
+	public ResponseEntity<List<GrupoYCursoPorProfesor>> GrupoYCurso(@PathVariable("idProfesor") long idProfesor ){
+		List<GrupoYCursoPorProfesor> lst = notasService.ListaCursosPorseccionParaProfesor(idProfesor);
+		return new ResponseEntity<List<GrupoYCursoPorProfesor>>(lst, HttpStatus.OK );
+		
+	}
 
 }
