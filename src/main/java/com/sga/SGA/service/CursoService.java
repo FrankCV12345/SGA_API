@@ -22,19 +22,32 @@ public class CursoService implements ICursoService {
 	@Override
 	public Curso update(Curso curso) {
 		// TODO Auto-generated method stub
-		return null;
+		Curso UpdatedCurso =  repoCurso.findById(curso.getId());
+		if(UpdatedCurso != null) {
+			return repoCurso.save(curso);
+		}else {
+			return null;
+		}
+		
 	}
 
 	@Override
 	public List<Curso> lista() {
 		// TODO Auto-generated method stub
-		return repoCurso.findAll();
+		return repoCurso.findBySfotdelete(false);
 	}
 
 	@Override
 	public boolean delete(long id) {
 		// TODO Auto-generated method stub
-		return false;
+		Curso curso = repoCurso.findById(id);
+		if(curso != null) {
+			curso.setSfotdelete(true);
+			repoCurso.save(curso);
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

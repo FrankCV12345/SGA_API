@@ -39,6 +39,18 @@ public class CalificacionAlumnoProfesorController {
 	
 	}
 	
+	
+	@GetMapping("/{idProfesor}/calificacion/{idAlumno}")
+	public ResponseEntity<CalificacionAlumnoProfesor> BuscaCalificacionPorProfesorYalumno(@PathVariable("idProfesor") long idProfesor ,@PathVariable("idAlumno") long idAlumno   ){
+		CalificacionAlumnoProfesor Calificacion = calificacionesProfesorService.BuscarPorProfesoryAlumno(idProfesor, idAlumno);
+		if(Calificacion == null) {
+			return  new ResponseEntity<CalificacionAlumnoProfesor>(Calificacion,HttpStatus.NOT_FOUND);
+		}else {
+			return  new ResponseEntity<CalificacionAlumnoProfesor>(Calificacion,HttpStatus.OK);
+		}
+	}
+	
+	
 	@PostMapping
 	public ResponseEntity<CalificacionAlumnoProfesor> registraCalificacion(@RequestBody CalificacionAlumnoProfesor calificacion){
 		CalificacionAlumnoProfesor newCalificacion = calificacionesProfesorService.registraCalificacion(calificacion);

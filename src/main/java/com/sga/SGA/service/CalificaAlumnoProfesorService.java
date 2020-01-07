@@ -90,4 +90,14 @@ public class CalificaAlumnoProfesorService implements ICalificaAlumnoProfesorSer
 		return listaPromediosProfesor;
 	}
 
+	@Override
+	public CalificacionAlumnoProfesor BuscarPorProfesoryAlumno(long idprofe, long idalumno) {
+		Usuario profesor  = new Usuario();
+		profesor.setId(idprofe);
+		Usuario alumnoCalifica  = new Usuario();
+		alumnoCalifica.setId(idalumno);
+		return repoCalificaciones.findByProfesorcalificadoAndAlumnocalifica(profesor, alumnoCalifica);
+	
+	}
+
 }

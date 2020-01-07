@@ -9,6 +9,7 @@ import com.sga.SGA.models.Usuario;
 
 public interface ICalificaAlumnoProfesorService {
 	CalificacionAlumnoProfesor registraCalificacion(CalificacionAlumnoProfesor calificacion);
+	CalificacionAlumnoProfesor BuscarPorProfesoryAlumno(long idprofe, long idalumno);
 	boolean eliminar(long id);
 	List<CalificacionAlumnoProfesor> listaCalificacionPorProfesor(long idprofe );
 	PerfiCalificafionProfesor perfilCalificacion(long idprofe);

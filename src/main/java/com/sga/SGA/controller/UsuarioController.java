@@ -41,7 +41,12 @@ public class UsuarioController {
 		
 	}
 	@PostMapping
-	public ResponseEntity<Usuario> Registra(@Valid @RequestBody Usuario user ){
+	public ResponseEntity<Usuario> Registra( @RequestBody Usuario user ){
+		if( user.getRol().getId() != 1 ) {
+			user.setSede(null);
+			user.setGrupo(null);
+		}
+		
 		Usuario u =  usuarioServicio.registrar(user);
 		if(u != null) {
 			return  new ResponseEntity<Usuario>(u,HttpStatus.CREATED);
