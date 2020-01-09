@@ -62,7 +62,12 @@ public class CalificaAlumnoProfesorService implements ICalificaAlumnoProfesorSer
 		
 		for(Object[] obj : lista ) {
 			Usuario pefesor = new Usuario();
-			pefesor.setId(Long.parseLong((obj[0].toString())));
+			pefesor.setId(
+					Long.parseLong(
+							(obj[0].toString()
+							)
+							)
+					);
 			pefesor.setNombre(obj[1].toString());
 			pefesor.setApellidos(obj[2].toString());
 			pefesor.setCorreo((obj[3].toString()));
