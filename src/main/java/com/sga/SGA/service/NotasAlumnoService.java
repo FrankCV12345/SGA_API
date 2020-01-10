@@ -37,6 +37,22 @@ public class NotasAlumnoService implements INotasAlumnoService {
 			}else if(notas.getExamenfinal() == null) {
 				notas.setExamenfinal(nota.getExamenfinal());
 			}
+			if(notas.getExamenfinal() != null) {
+				Double promedioFinal = (notas.getNota1() * 0.04)+ (notas.getNota1()* 0.12) +  (notas.getNota1() * 0.24) + (notas.getNota1() * 0.6);
+				
+				if(promedioFinal >= 13) {
+					notas.setEstadoaprobado("Aprobado");
+				}else {
+					notas.setEstadoaprobado("Desaprobado");
+				}
+				
+			}
+			/*
+			notas.setNota1(nota.getNota1());
+			notas.setNota2(nota.getNota2());
+			notas.setNota3(nota.getNota3());
+			notas.setExamenfinal(nota.getExamenfinal());
+			*/
 			return repoNotasAlumno.save(notas);
 		}
 		
