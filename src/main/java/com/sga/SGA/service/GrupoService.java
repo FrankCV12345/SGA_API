@@ -28,8 +28,7 @@ public class GrupoService implements IGrupoService {
 
 	@Override
 	public Grupo modificar(Grupo grupo) {
-		// TODO Auto-generated method stub
-		return null;
+		return repoGrupo.save(grupo);
 	}
 
 	@Override

@@ -34,15 +34,21 @@ public class CursoCarrerasService implements ICursosCarrerasService {
 
 	@Override
 	public boolean delete(long id) {
-		// TODO Auto-generated method stub
-		return false;
+		CursosCarreras curso = repoCarreras.findById(id);
+		if(curso != null) {
+			curso.setSoftdelte(true);
+			repoCarreras.save(curso);
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	@Override
 	public List<CursosCarreras> ListarCursosPorGrupo(Long idGrupo) {
 		Grupo grupo = new Grupo();
 		grupo.setId(idGrupo);
-		return repoCarreras.findByGrupo(grupo);
+		return repoCarreras.findByGrupoAndSoftdelte(grupo,false);
 	}
 
 	@Override

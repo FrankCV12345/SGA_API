@@ -3,6 +3,7 @@ package com.sga.SGA.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,16 @@ public class UsuarioController {
 		
 		
 	}
+	@GetMapping("updatePassword/{idUser}/oldpass={oldpass}&newpass={newpass}")
+	public ResponseEntity<Boolean> ActualizaPass( @PathVariable("idUser") long idUser,@PathVariable("oldpass") String oldpass,@PathVariable("newpass") String newpass   ){
+		Boolean estado = usuarioServicio.ModificaPassword(idUser, oldpass,newpass );
+		System.out.println("old "+oldpass+" newpass "+newpass);
+		if(estado) {
+			return new ResponseEntity<Boolean>(estado,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<Boolean>(estado,HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 	@PutMapping(path="/{id}")
 	public ResponseEntity<Usuario>AztualizaDatosUser(@PathVariable("id") Long id , @Valid @RequestBody  Usuario user){
@@ -84,6 +95,32 @@ public class UsuarioController {
 		List<Usuario> listaAlumnosPorGrupo = usuarioServicio.ListaAlumnosPorGrupo(idGrupo);
 		return new ResponseEntity<List<Usuario>>(listaAlumnosPorGrupo,HttpStatus.OK);
 	}
+	
+	@DeleteMapping("/{idUsu}")
+	public ResponseEntity<Boolean> EliminaUsuario(@PathVariable("idUsu") long idUsu) {
+		boolean estado = usuarioServicio.Eliminar(idUsu);
+		if(estado) {
+
+			return new ResponseEntity<Boolean>(estado,HttpStatus.OK);
+			
+		}else {
+
+			return new ResponseEntity<Boolean>(estado,HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	
+	@GetMapping("/HabilitarUsuario/{idUsu}")
+	public ResponseEntity<Boolean> Habilitausuario(@PathVariable("idUsu") long idUsu) {
+		boolean estado = usuarioServicio.Habilitar(idUsu);
+		if(estado) {
+			return new ResponseEntity<Boolean>(estado,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<Boolean>(estado,HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	
 	
 	
 }

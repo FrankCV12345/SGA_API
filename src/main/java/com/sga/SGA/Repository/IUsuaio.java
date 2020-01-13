@@ -15,4 +15,5 @@ public interface IUsuaio extends JpaRepository<Usuario,Long> {
 	Usuario findById(long id);
 	List<Usuario> findByRol(TipoRol rol);
 	List<Usuario> findByGrupo(Grupo grupo);	
+	Usuario findByIsHabilitado(boolean estado);
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,4 +35,11 @@ public class GrupoController {
 		Grupo newGrupo = grupoService.registrar(grupo);
 		return new ResponseEntity<Grupo>(newGrupo,HttpStatus.CREATED);
 	}
+	
+	@PutMapping
+	public ResponseEntity<Grupo> Actualiza(@RequestBody Grupo grupo){
+		Grupo UpdatedGrupo = grupoService.modificar(grupo);
+		return new ResponseEntity<Grupo>(grupo,HttpStatus.OK);
+	}
+	
 }

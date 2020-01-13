@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,7 +46,6 @@ public class CursosCarrerasController {
 	@PostMapping("/registraCursos")
 	public ResponseEntity<CursosCarreras> registrarListaCursos(@RequestBody List<CursosCarreras> cursosCarrera ){
 		boolean estado = servceCurso.RegistraCursosParaGrupo(cursosCarrera);
-		
 		if(estado) {
 			return new ResponseEntity<CursosCarreras>(HttpStatus.CREATED);
 		}else {
@@ -59,6 +59,17 @@ public class CursosCarrerasController {
 	public ResponseEntity<List<CursosCarreras>> listarCursosPorGrupo(@PathVariable("id") long idGrupo){
 		List<CursosCarreras> lista = servceCurso.ListarCursosPorGrupo(idGrupo);
 		return new  ResponseEntity<List<CursosCarreras>>(lista,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Boolean> eliminaSuaveCurso(@PathVariable("id") long id){
+		Boolean estado =  servceCurso.delete(id);
+		if(estado) {
+			return new ResponseEntity<Boolean>(estado,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<Boolean>(estado,HttpStatus.BAD_REQUEST);
+		}
+		
 	}
 
 	

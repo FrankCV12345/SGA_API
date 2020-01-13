@@ -8,11 +8,14 @@ import com.sga.SGA.models.Usuario;
 public interface IUsuarioService {
 	Usuario registrar ( Usuario user);
 	Usuario Modificar(long id , Usuario user);
-	boolean Eliminar();
+	boolean Eliminar(long id);
+	boolean Habilitar(long id);
+	boolean ModificaPassword(long id, String pass, String newPass);
 	List<Usuario> listar();
 	Usuario listarPorId(long idUser);
 	Page<Usuario> listaPageable(Pageable pageable);
 	List<Usuario> ListaUsuarioProfesor();
 	List<Usuario> ListaUsuarioAlumno();
 	List<Usuario> ListaAlumnosPorGrupo(long idGrupo);
+	
 }

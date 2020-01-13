@@ -41,10 +41,9 @@ public class LoginController {
 		user = loginService.Login(userLogin.getCorreo());
 		if(user != null) {
 			
-			if(encoder.matches(userLogin.getPassword(),user.getPassword())  ) {
+			if(encoder.matches(userLogin.getPassword(),user.getPassword())) {
 				
 				if(user.isHabilitado()) {
-
 					user.setToken(getJWTToken(userLogin.getCorreo()));
 					user.setPassword(null);
 					return new ResponseEntity<Usuario>(user,HttpStatus.ACCEPTED);

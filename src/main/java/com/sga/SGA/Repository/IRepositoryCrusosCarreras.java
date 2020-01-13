@@ -11,5 +11,5 @@ import com.sga.SGA.models.Grupo;
 public interface IRepositoryCrusosCarreras extends JpaRepository<CursosCarreras, Long> {
 	
 	CursosCarreras findById(long id);
-	List<CursosCarreras> findByGrupo(Grupo grupo);
+	List<CursosCarreras> findByGrupoAndSoftdelte(Grupo grupo, boolean estado);
 }

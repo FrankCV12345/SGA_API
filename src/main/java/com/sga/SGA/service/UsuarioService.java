@@ -25,10 +25,29 @@ public class UsuarioService implements IUsuarioService{
 	
 
 	@Override
-	public boolean Eliminar() {
+	public boolean Eliminar(long id) {
 		// TODO Auto-generated method stub
-		return false;
+		Usuario usu = iusario.findById(id);
+		if(usu != null) {
+			usu.setHabilitado(false);
+			iusario.save(usu);
+			return true;
+		}else {
+			return false;
+		}
 	}
+	@Override
+	public boolean Habilitar(long id) {
+		Usuario usu = iusario.findById(id);
+		if(usu != null) {
+			usu.setHabilitado(true);
+			iusario.save(usu);
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 
 	@Override
 	public List<Usuario> listar() {
@@ -95,11 +114,28 @@ public class UsuarioService implements IUsuarioService{
 
 	@Override
 	public List<Usuario> ListaAlumnosPorGrupo(long idGrupo) {
-
 		Grupo g  = new Grupo();
 		g.setId(idGrupo);
 		return iusario.findByGrupo(g);
 	}
+	@Override
+	public boolean ModificaPassword(long id,String pass, String newpass) {
+		Usuario user = iusario.findById(id);
+		if( user != null) {
+			if(encoder.matches(pass,user.getPassword())) {
+				user.setPassword(encoder.encode(newpass ));
+				iusario.save(user);
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			System.out.println("no existe");
+			return false;
+		}
+		
+	}
 
+	
 
 }
