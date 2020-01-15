@@ -119,19 +119,18 @@ public class UsuarioService implements IUsuarioService{
 		return iusario.findByGrupo(g);
 	}
 	@Override
-	public boolean ModificaPassword(long id,String pass, String newpass) {
+	public Usuario ModificaPassword(long id,String pass, String newpass) {
 		Usuario user = iusario.findById(id);
 		if( user != null) {
 			if(encoder.matches(pass,user.getPassword())) {
 				user.setPassword(encoder.encode(newpass ));
 				iusario.save(user);
-				return true;
+				return user;
 			}else {
-				return false;
+				return null;
 			}
 		}else {
-			System.out.println("no existe");
-			return false;
+			return null;
 		}
 		
 	}

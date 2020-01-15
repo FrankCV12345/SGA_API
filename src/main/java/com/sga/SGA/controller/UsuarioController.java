@@ -58,13 +58,13 @@ public class UsuarioController {
 		
 	}
 	@GetMapping("updatePassword/{idUser}/oldpass={oldpass}&newpass={newpass}")
-	public ResponseEntity<Boolean> ActualizaPass( @PathVariable("idUser") long idUser,@PathVariable("oldpass") String oldpass,@PathVariable("newpass") String newpass   ){
-		Boolean estado = usuarioServicio.ModificaPassword(idUser, oldpass,newpass );
+	public ResponseEntity<Usuario> ActualizaPass( @PathVariable("idUser") long idUser,@PathVariable("oldpass") String oldpass,@PathVariable("newpass") String newpass   ){
+		Usuario estado = usuarioServicio.ModificaPassword(idUser, oldpass,newpass );
 		System.out.println("old "+oldpass+" newpass "+newpass);
-		if(estado) {
-			return new ResponseEntity<Boolean>(estado,HttpStatus.OK);
+		if(estado != null ) {
+			return new ResponseEntity<Usuario>(estado,HttpStatus.OK);
 		}else {
-			return new ResponseEntity<Boolean>(estado,HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Usuario>(estado,HttpStatus.BAD_REQUEST);
 		}
 	}
 	

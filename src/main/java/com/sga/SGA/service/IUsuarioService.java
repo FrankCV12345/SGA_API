@@ -10,7 +10,7 @@ public interface IUsuarioService {
 	Usuario Modificar(long id , Usuario user);
 	boolean Eliminar(long id);
 	boolean Habilitar(long id);
-	boolean ModificaPassword(long id, String pass, String newPass);
+	Usuario ModificaPassword(long id, String pass, String newPass);
 	List<Usuario> listar();
 	Usuario listarPorId(long idUser);
 	Page<Usuario> listaPageable(Pageable pageable);

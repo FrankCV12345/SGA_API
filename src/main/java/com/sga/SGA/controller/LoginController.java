@@ -48,7 +48,7 @@ public class LoginController {
 					user.setPassword(null);
 					return new ResponseEntity<Usuario>(user,HttpStatus.ACCEPTED);
 				}else {
-					return new ResponseEntity<Usuario>(HttpStatus.NOT_FOUND);
+					return new ResponseEntity<Usuario>(HttpStatus.UNAUTHORIZED);
 				}
 				
 				
