@@ -20,44 +20,50 @@ public class NotasAlumnoService implements INotasAlumnoService {
 	public NotasAlumno registra(NotasAlumno nota) {
 		// TODO Auto-generated method stub
 		
-		//repoNotasAlumno.findById(id)
 		NotasAlumno notas = repoNotasAlumno.findByAlumnoAndCurso(nota.getAlumno(), nota.getCurso());
 		java.util.Date utilDate = new java.util.Date();
 		nota.setFechaaultimaActualizacion( new Date (utilDate.getTime()));
 		if(notas == null) {
 			return repoNotasAlumno.save(nota);
 		}else {
-			if(notas.getNota1() == null) {
-				notas.setNota1(nota.getNota1());
-			}else if(notas.getNota2() == null) {
-				notas.setNota2(nota.getNota2());
-				
-			}else if(notas.getNota3() ==  null) {
-				notas.setNota3(nota.getNota3());
-			}else if(notas.getExamenfinal() == null) {
-				notas.setExamenfinal(nota.getExamenfinal());
+			if(notas.getNota1() == null && nota.getNota1() != null) {
+				if(nota.getNota1() >= 0 && nota.getNota1() <= 20) {
+					notas.setNota1(nota.getNota1());
+				}
+			} 
+			if(notas.getNota2() == null && nota.getNota2() != null) {
+				if(nota.getNota2() >= 0 && nota.getNota2() <= 20) {
+					notas.setNota2(nota.getNota2());
+				}
 			}
+			if(notas.getNota3() ==  null && nota.getNota3() != null) {
+				if(nota.getNota3() >= 0 && nota.getNota3() <= 20 ) {
+					notas.setNota3(nota.getNota3());
+				}
+			}
+			if(notas.getExamenfinal() == null && nota.getExamenfinal() != null) {
+				if(nota.getExamenfinal() >=0 && nota.getExamenfinal() <= 20) {
+					notas.setExamenfinal(nota.getExamenfinal());
+				}
+			}
+			System.out.println("----------------");
 			if(notas.getExamenfinal() != null) {
-				Double promedioFinal = (notas.getNota1() * 0.04)+ (notas.getNota1()* 0.12) +  (notas.getNota1() * 0.24) + (notas.getNota1() * 0.6);
-				
+				Double promedioFinal = (
+						(notas.getNota1() * 0.04) + (notas.getNota2() * 0.12) +  (notas.getNota3() * 0.24) + (notas.getExamenfinal() * 0.6) 
+						);
+				System.out.println("pronedio : "+promedioFinal);
 				if(promedioFinal >= 13) {
 					notas.setEstadoaprobado("Aprobado");
 				}else {
 					notas.setEstadoaprobado("Desaprobado");
 				}
-				
+			}else {
+				System.out.println("Examen final nulo : "+ notas.getExamenfinal());
 			}
-			/*
-			notas.setNota1(nota.getNota1());
-			notas.setNota2(nota.getNota2());
-			notas.setNota3(nota.getNota3());
-			notas.setExamenfinal(nota.getExamenfinal());
-			*/
+			System.out.println("----------------");
+			
 			return repoNotasAlumno.save(notas);
 		}
-		
-		
-		
 	}
 
 	@Override

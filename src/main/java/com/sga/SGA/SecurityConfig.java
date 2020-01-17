@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		http.csrf().disable()
 			.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 			.authorizeRequests()
+			.antMatchers(HttpMethod.POST, "/loginSeguro").permitAll()
 			.antMatchers(HttpMethod.POST, "/login").permitAll()
 			.anyRequest().authenticated();
 		http.cors();

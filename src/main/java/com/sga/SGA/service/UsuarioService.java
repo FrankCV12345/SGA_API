@@ -90,6 +90,7 @@ public class UsuarioService implements IUsuarioService{
 		User.setTelefono(user.getTelefono());
 		User.setTipoDoc(new TipoDNI(user.getTipoDoc().getId()));
 		User.setSexo(new TipoSexo(user.getSexo().getId()));
+		
 		if(user.getGrupo() != null) {
 			User.setGrupo(user.getGrupo());
 		}

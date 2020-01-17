@@ -47,6 +47,9 @@ public class Usuario {
 	private Date fechaRegistrado;
 	@Transient
 	private String token;
+	@Transient
+	private String responseCaptcha;
+	
 	//Claves foraneas
 	@ManyToOne
 	private TipoDNI TipoDoc;
@@ -199,6 +202,12 @@ public class Usuario {
 	}
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
+	}
+	public String getResponseCaptcha() {
+		return responseCaptcha;
+	}
+	public void setResponseCaptcha(String responseCaptcha) {
+		this.responseCaptcha = responseCaptcha;
 	}
 	
 
